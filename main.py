@@ -6,8 +6,6 @@ from tkinter import *  # Import GUI library
 
 def main():
     def ssymbols():
-        # Replaces symbols below FOR FUTURE FEATURES
-        # print('1') # TEST
         global npass
         npass = npass.replace('A', '@')
         npass = npass.replace('a', '@')
@@ -33,7 +31,7 @@ def main():
         npass = npass.replace('u', '*')
 
     def generate(event):
-        global count  # This counter uses for better display of buttons (At first displays strings, after just configures those strings
+        global count
         if count == 0:
             str1.pack()
             str2.pack()
@@ -47,7 +45,6 @@ def main():
         global start
         global ch1
 
-        # print(ch1.get()) # TEST
         pl = ent_passlength.get()  # Gets a string from a label
         pl = int(pl)  # Makes an integer
         passlength = pl
@@ -99,7 +96,10 @@ def main():
     pllabel = Label(window, text="Please, enter your password phrase:", font=vfont)
     ypass = Label(window, textvariable="", font=vfont)
     npasslabel = Label(window, text="", font=vfont)
+
+    global ch1
     ch1 = IntVar()  # Integer variable for checkbutton
+    global count
     count = int(0)  # Counter of generate button
 
     chkbt1 = Checkbutton(window, text="Use special symbols", variable=ch1, onvalue=1, font=vfont)
