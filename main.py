@@ -32,15 +32,11 @@ def gen(ent_passphrase, ent_passlength):
     pl = int(ent_passlength)  # Makes an integer
     passlength = pl
     yourpass = str(ent_passphrase)
-    # print(yourpass) # TEST
     yourpass = yourpass.title().strip()  # Make every word with Upper first letter and delete spaces at boards
-    # print("------\n\n" + yourpass + "\n\n------") # TEST
     yourpass = hashlib.md5(yourpass.encode()).hexdigest()  # Generates md5 checksum
     yourpass = str(yourpass * 2).encode()
-    # print("------\n\n" + yourpass + "\n\n------") # TEST
     yourpass = base64.b64encode(bytes(yourpass))  # Generate md5 checksum
     yourpass = str(yourpass * 2).encode()
-    # print("------\n\n" + yourpass + "\n\n------") # TEST
     yourpass = base64.b64encode(bytes(yourpass))  # Generate md5 checksum
     yourpass = str(yourpass)
     passlength = int(passlength)
@@ -51,26 +47,39 @@ def gen(ent_passphrase, ent_passlength):
     return npass
 
 
-def main():
-    welcome = "Hello! This programm will help you to generate your password."
-    description = "You should just input the length of your password and phrase that your password will be based on."
+def input_params_and_gen():
     text_pass_phrase = "Please, enter your password phrase:"
     text_password_length = "What length of password you want (number of symbols)?"
+    text_ssymbols = "Are you want to use special symbols? If yes, type 'y'"
     password_notification = "Your password is: "
-    text_ssymbols = "Are you want to use special symbols? [y/n]"
 
-    print(welcome)
-    print(description)
     print(text_pass_phrase)
     pass_phrase = input()
     print(text_password_length)
     pass_length = input()
     print(text_ssymbols)
-    ssymbols = input()
+    spec_symbols = str(input())
     password = gen(pass_phrase, pass_length)
-    if ssymbols == "y":
+    if spec_symbols == "y":
         password = ssymbols(password)
     print(password_notification + password)
+    print()
+
+
+def main():
+    welcome = "Hello! This programm will help you to generate your password."
+    description = "You should just input the length of your password and phrase that your password will be based on."
+
+    print(welcome)
+    print(description)
+
+    counter = "y"
+    while counter == "y":
+        input_params_and_gen()
+        again = "Are you want to generate another password? If yes, type 'y'"
+        print(again)
+        counter = input()
+
 
 
 if __name__ == "__main__":
