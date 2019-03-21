@@ -49,18 +49,13 @@ def main():
         pl = int(pl)  # Makes an integer
         passlength = pl
         yourpass = ent_passphrase.get()
-        # print(yourpass) # TEST
         yourpass = yourpass.title().strip()  # Make every word with Upper first letter and delete spaces at boards
-        # print("------\n\n" + yourpass + "\n\n------") # TEST
         yourpass = hashlib.md5(yourpass.encode()).hexdigest()  # Generates md5 checksum
         yourpass = str(yourpass * 2).encode()
-        # print("------\n\n" + yourpass + "\n\n------") # TEST
         yourpass = base64.b64encode(bytes(yourpass))  # Generate md5 checksum
         yourpass = str(yourpass * 2).encode()
-        # print("------\n\n" + yourpass + "\n\n------") # TEST
         yourpass = base64.b64encode(bytes(yourpass))  # Generate md5 checksum
         yourpass = str(yourpass)
-        # print("------\n\n" + yourpass + "\n\n------") # TEST
         ypass.configure(textvariable=yourpass, text=yourpass)
         passlength = int(passlength)
         n = 80 + passlength
@@ -95,7 +90,6 @@ def main():
 
     pllabel = Label(window, text="Please, enter your password phrase:", font=vfont)
     ypass = Label(window, textvariable="", font=vfont)
-    npasslabel = Label(window, text="", font=vfont)
 
     global ch1
     ch1 = IntVar()  # Integer variable for checkbutton
