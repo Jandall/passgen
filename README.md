@@ -1,4 +1,6 @@
 # PassGen #
 Password generator.
 
-Added console version of application.
+
+v1.1
+* Added console version of application.
